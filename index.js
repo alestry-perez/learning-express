@@ -14,7 +14,6 @@ const mid = (req, res, next) => {
 };
 
 // * GET, PUT, POST, DELETE * //
-
 // Get Information
 app.get('/products/:id', mid, (req, res) => {
   res.json(
