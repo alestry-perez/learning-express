@@ -3,6 +3,7 @@ import Products from './products.js';
 
 const app = Express();
 const port = 3000;
+
 app.use(Express.json());
 app.use(Express.urlencoded({ extended: true }));
 
@@ -12,8 +13,9 @@ const mid = (req, res, next) => {
   next();
 };
 
-// GET, PUT, POST, DELETE
+// * GET, PUT, POST, DELETE * //
 
+// Get Information
 app.get('/products/:id', mid, (req, res) => {
   res.json(
     Products.find((product) => {
@@ -24,6 +26,7 @@ app.get('/products/:id', mid, (req, res) => {
   // res.json(Products);
 });
 
+// Add Information
 app.post('/add', (req, res) => {
   console.log(req.body.id);
   res.sendStatus(200);
