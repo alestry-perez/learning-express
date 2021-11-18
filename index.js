@@ -9,19 +9,24 @@ app.use(Express.urlencoded({ extended: true }));
 
 // Custom Middleware
 const mid = (req, res, next) => {
+  if (Number(req.params.id) < 0) {
+    res.send('Error You Messed UP! ++ Numbers Only');
+  } else {
+    next();
+  }
   console.log(req.query);
   console.log(req.params);
-  next();
 };
 
 // * GET, PUT, POST, DELETE * //
 // Get Information
-app.get('/products/:id', mid, (req, res) => {
+app.get('/products/:id', [mid], (req, res) => {
   res.json(
     Products.find((product) => {
-      return +req.params.id === product.id;
+      return req.params.id === product.id;
     })
   );
+
   // res.send(req.params.id);
   // res.json(Products);
 });
