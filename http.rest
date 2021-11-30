@@ -1,4 +1,4 @@
-GET http://localhost:3000/products/-1
+GET http://localhost:3000/products/1
 
 ###
 
@@ -9,3 +9,7 @@ Content-Type: application/json
         "title": "test",
         "id": 5
 }
+
+###
+
+POST http://localhost:3000/api/refresh
